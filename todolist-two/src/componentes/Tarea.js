@@ -1,29 +1,19 @@
 import { useState } from "react";
 
 export function Tarea(props) {
-  const { tarea} = props;
+  
+  const { tarea, onBorrarTarea} = props
+  const[editando] = useState(false)
+  
 
-  const [editando, setEditando] = useState(false);
 
   function ModoEdicionActivado() {
-    const [valor, setValor] = useState(tarea.tarea);
-
-    function handleChange (e) {
-        const text = e.target.value
-        setValor(text)
-    }
-
-    function handleClick(e){
-        e.preventDefault()
-    }
 
     return (
       <>
-        <input type="text" onChange={handleChange} value={valor}></input>
-
-        <button className="btn" onClick={handleClick}>Guardar</button>
-
-        <button className="btn btnBorrar">Borrar</button>
+        <button className="btn btnBorrar"
+        onClick={() => onBorrarTarea(tarea.id)}>
+        Borrar</button>
       </>
     );
   }
@@ -33,7 +23,9 @@ export function Tarea(props) {
       <>
         <span>{tarea.tarea}</span>
 
-        <button className="btn btnBorrar">Borrar</button>
+        <button className="btn btnBorrar"
+        onClick={() => onBorrarTarea(tarea.id)}>
+        Borrar</button>
       </>
     );
   }
@@ -42,7 +34,8 @@ export function Tarea(props) {
     <>
       <div className="contenedorTarea" id={tarea.id}>
         {
-            editando ? <ModoEdicionActivado/>
+            editando 
+            ? <ModoEdicionActivado/>
             : <ModoEdicionDesactivado/>
         }
       </div>

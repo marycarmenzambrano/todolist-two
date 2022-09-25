@@ -54,20 +54,10 @@ input {
 }
 
 .btn:hover {
-  background-color: darkgreen;
+  background-color: rgb(100, 0, 55);
   transform: scale(1.1);
 }
 
-.btnEditar {
-  background-color: aqua;
-  color: #fff;
-  margin-right: 10px;
-}
-
-.btnEditar:hover {
-  background-color: aqua;
-  transform: scale(1.1);
-}
 
 .btnBorar {
   background-color:rgb(162, 108, 194);
@@ -98,10 +88,3 @@ input {
   box-shadow: 5px 5px rgba(255, 255, 255, 0.3);
 }
 
-.todoTarea {
-  margin-right: 50px;
-}
-
-.spanSubrayado {
-  text-decoration: line-through;
-}

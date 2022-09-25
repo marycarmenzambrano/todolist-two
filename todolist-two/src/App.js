@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './App.css';
-import {Formulario} from './componentes/Formulario';
-import {Tarea} from './componentes/Tarea';
+import { Formulario } from './componentes/Formulario';
+import { Tarea } from './componentes/Tarea';
 
 
 
@@ -33,17 +33,11 @@ function App() {
   function handleChange(e) {
     setTarea(e.target.value)
   }
-
-  function onActualizarTarea(objEditarTarea){
-    const {id, tarea} = objEditarTarea
-
-    const temp = [...listadoTareas]
-    const elemento = temp.find(item => item.id === id)
-    elemento.tarea = tarea
-
+  
+  function onBorrarTarea(id) {
+    const temp = listadoTareas.filter(item => item.id !== id)
     setListadoTareas(temp)
   }
-  
 
 
 
@@ -69,6 +63,7 @@ function App() {
                     key={tarea.id}
                     id={tarea.id}
                     tarea={tarea}
+                    onBorrarTarea={onBorrarTarea}
                    />
                 ))
               }
