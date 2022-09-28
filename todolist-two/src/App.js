@@ -10,6 +10,34 @@ function App() {
   const [tarea, setTarea] = useState('')
   const [listadoTareas, setListadoTareas] = useState([])
 
+  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState([]);
+  const URL = " https://assets.breatheco.de/apis/fake/todos/user/marycarmenzambrano";
+  const config = {
+    method: "post",
+    headers: {
+      "Content-Type": "application/json",
+    },
+     body: JSON.stringify([])
+  };
+
+    fetch(URL, config)
+      .then((response) => {
+        console.log(response);
+        return response.json();
+      })
+      .then ((data) => console.log (data))
+      .catch((error) => console.log (error));
+
+
+
+
+
+
+
+
+
+
   function handleSubmit(e) {
     e.preventDefault()
 
