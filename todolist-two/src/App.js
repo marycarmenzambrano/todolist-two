@@ -10,25 +10,23 @@ function App() {
   const [tarea, setTarea] = useState('')
   const [listadoTareas, setListadoTareas] = useState([])
 
-  const [loading, setLoading] = useState(false);
-  const [data, setData] = useState([]);
-  const URL = " https://assets.breatheco.de/apis/fake/todos/user/marycarmenzambrano";
+
+  const url = "https://assets.breatheco.de/apis/fake/todos/user/mzambrano";
   const config = {
-    method: "post",
+    method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-     body: JSON.stringify([])
+    body: JSON.stringify([])
   };
 
-    fetch(URL, config)
-      .then((response) => {
-        console.log(response);
-        return response.json();
-      })
-      .then ((data) => console.log (data))
-      .catch((error) => console.log (error));
-
+  fetch(url, config)
+    .then((response) => {
+      console.log(response);
+      return response.json();
+    })
+    .then(data => console.log(data))
+    .catch((error) => console.log(error));
 
 
 
@@ -41,7 +39,7 @@ function App() {
   function handleSubmit(e) {
     e.preventDefault()
 
-    if(tarea === '') {
+    if (tarea === '') {
       alert('Debes escribir una tarea')
       return
     }
@@ -57,11 +55,11 @@ function App() {
 
     setTarea('')
   }
-  
+
   function handleChange(e) {
     setTarea(e.target.value)
   }
-  
+
   function onBorrarTarea(id) {
     const temp = listadoTareas.filter(item => item.id !== id)
     setListadoTareas(temp)
@@ -69,38 +67,38 @@ function App() {
 
 
 
-  return(
+  return (
     <>
-     <div className='contendorPrincipal'>
-          <h1>Todolist</h1>
+      <div className='contendorPrincipal'>
+        <h1>Todolist</h1>
 
-          <div className='contenedorFormulario'>
-            <Formulario
-             tarea ={tarea}
-             handleSubmit={handleSubmit}
-             handleChange={handleChange} />
-          </div>
+        <div className='contenedorFormulario'>
+          <Formulario
+            tarea={tarea}
+            handleSubmit={handleSubmit}
+            handleChange={handleChange} />
+        </div>
 
-          <div className='contenedorTareas'>
-            <h2>Lista de Tareas</h2>
+        <div className='contenedorTareas'>
+          <h2>Lista de Tareas</h2>
 
-            <div className='contenedorInfoTareas'>
-              {
-                listadoTareas.map(tarea =>(
-                  <Tarea
-                    key={tarea.id}
-                    id={tarea.id}
-                    tarea={tarea}
-                    onBorrarTarea={onBorrarTarea}
-                   />
-                ))
-              }
-
-            </div>
+          <div className='contenedorInfoTareas'>
+            {
+              listadoTareas.map(tarea => (
+                <Tarea
+                  key={tarea.id}
+                  id={tarea.id}
+                  tarea={tarea}
+                  onBorrarTarea={onBorrarTarea}
+                />
+              ))
+            }
 
           </div>
-     </div>
-     </>
+
+        </div>
+      </div>
+    </>
   );
 }
 
