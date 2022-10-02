@@ -14,11 +14,18 @@ function App() {
 
   const url = "https://assets.breatheco.de/apis/fake/todos/user/mzambrano";
   const config = { 
-    method: "GET",
+    method: "PUT",
     Headers: {
       "Content-Type": "application/json"
     },
+    body: JSON.stringify([
+      [
+        { label: "Estudiar", done: false },
+        { label: "Lavar la Ropa", done: false },
+        { label: "Hacer mercado", done: false }
+      ]
 
+    ]),
   };
 
   fetch(url, config)
@@ -28,6 +35,31 @@ function App() {
   })
   .then(data => console.log(data))
   .catch((error) => console.log(error));
+
+
+
+
+
+
+  /*const config = { 
+    method: "POST",
+    Headers: {
+      "Content-Type": "application/json"
+    },
+    //body: JSON.stringify([]),
+  };
+
+  fetch(url, config)
+  .then((response) => {
+    console.log(response);
+    return response.json();
+  })
+  .then(data => console.log(data))
+  .catch((error) => console.log(error));*/
+
+
+
+  
 
 
  
