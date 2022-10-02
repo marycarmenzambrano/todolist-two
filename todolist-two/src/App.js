@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './App.css';
 import { Formulario } from './componentes/Formulario';
@@ -13,21 +13,29 @@ function App() {
 
 
   const url = "https://assets.breatheco.de/apis/fake/todos/user/mzambrano";
-  const config = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
+  const config = { 
+    method: "GET",
+    Headers: {
+      "Content-Type": "application/json"
     },
-    body: JSON.stringify([])
+
   };
 
   fetch(url, config)
-    .then((response) => {
-      console.log(response);
-      return response.json();
-    })
-    .then(data => console.log(data))
-    .catch((error) => console.log(error));
+  .then((response) => {
+    console.log(response);
+    return response.json();
+  })
+  .then(data => console.log(data))
+  .catch((error) => console.log(error));
+
+
+ 
+  
+    
+  
+
+ 
 
 
 

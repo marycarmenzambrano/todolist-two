@@ -34,6 +34,7 @@ h1 {
   border-radius: 10px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 
@@ -76,6 +77,7 @@ input {
   display: flex;
   align-items: center;
   flex-direction: column;
+  justify-content: center;
 }
 
 .contenedorTarea {
