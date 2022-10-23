@@ -2,24 +2,42 @@ export function Formulario(props) {
 
     const { tarea, handleSubmit, handleChange } = props
 
-
-
-    const url = "https://assets.breatheco.de/apis/fake/todos/user/mzambrano";
+   
+    const URL = "https://assets.breatheco.de/apis/fake/todos/user/mzambrano";
     const config = {
-        method: "PUT",
+        method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify([])
+        body: JSON.stringify([]),
     };
 
-    fetch(url, config)
+    fetch(URL, config)
         .then((response) => {
-            console.log(response);c
+            console.log(response);
             return response.json();
         })
-        .then(data => console.log(data))
+        .then((data) => console.log(data,"data"))
         .catch((error) => console.log(error));
+   
+   
+   
+   
+   
+   
+   
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
