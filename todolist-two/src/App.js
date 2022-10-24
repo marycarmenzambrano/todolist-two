@@ -4,7 +4,7 @@ import './App.css';
 import { Formulario } from './componentes/Formulario';
 import { Tarea } from './componentes/Tarea';
 
-
+ export const baseURL = "https://assets.breatheco.de/apis/fake/todos/user/mzambrano";
 
 function App() {
 
@@ -12,53 +12,46 @@ function App() {
   const [listadoTareas, setListadoTareas] = useState([])
 
 
-  const url = "https://assets.breatheco.de/apis/fake/todos/user/mzambrano";
-  const config = { 
-    method: "PUT",
-    Headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify([
-      [
-        { label: "Estudiar", done: false },
-        { label: "Lavar la Ropa", done: false },
-        { label: "Hacer mercado", done: false }
-      ]
+  // const url = "https://assets.breatheco.de/apis/fake/todos/user/mzambrano";
+  // const config = { 
+  //   method: "PUT",
+  //   Headers: {
+  //     "Content-Type": "application/json"
+  //   },
+  //   body: JSON.stringify([
+  //     [
+  //       { label: "Estudiar", done: false },
+  //       { label: "Lavar la Ropa", done: false },
+  //       { label: "Hacer mercado", done: false }
+  //     ]
 
-    ]),
-  };
+  //   ]),
+  // };
 
-  fetch(url, config)
-  .then((response) => {
-    console.log(response);
-    return response.json();
-  })
-  .then(data => console.log(data))
-  .catch((error) => console.log(error));
-
+  // fetch(url, config)
+  // .then((response) => {
+  //   console.log(response);
+  //   return response.json();
+  // })
+  // .catch((error) => console.log(error));
 
 
 
+    // const URL = "https://assets.breatheco.de/apis/fake/todos/user/mzambrano";
+    // const config = {
+    //     method: "POST",
+    //     headers: {
+    //         "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify([]),
+    // };
 
-
-  /*const config = { 
-    method: "POST",
-    Headers: {
-      "Content-Type": "application/json"
-    },
-    //body: JSON.stringify([]),
-  };
-
-  fetch(url, config)
-  .then((response) => {
-    console.log(response);
-    return response.json();
-  })
-  .then(data => console.log(data))
-  .catch((error) => console.log(error));*/
-
-
-
+    // fetch(URL, config)
+    //     .then((response) => {
+    //         console.log(response);
+    //         return response.json();
+    //     })
+    //     .catch((error) => console.log(error));
   
 
 
@@ -68,11 +61,6 @@ function App() {
   
 
  
-
-
-
-
-
 
 
 
@@ -94,6 +82,30 @@ function App() {
     const temp = [nuevaTarea, ...listadoTareas]
     setListadoTareas(temp)
 
+
+
+  const config = { 
+    method: "PUT",
+    Headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify([
+      [
+        { label: "Estudiar", done: false },
+        { label: "Lavar la Ropa", done: false },
+        { label: "Hacer mercado", done: false }
+      ]
+
+    ]),
+  };
+
+  fetch(baseURL, config)
+  .then((response) => {
+    console.log(response);
+    return response.json();
+  })
+  .catch((error) => console.log(error));
+
     setTarea('')
   }
 
@@ -109,7 +121,7 @@ function App() {
 
 
   return (
-    <>
+    
       <div className='contendorPrincipal'>
         <h1>Todolist</h1>
 
@@ -139,7 +151,6 @@ function App() {
 
         </div>
       </div>
-    </>
   );
 }
 
