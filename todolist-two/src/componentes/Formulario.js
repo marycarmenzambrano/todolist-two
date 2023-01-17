@@ -6,22 +6,6 @@ export function Formulario(props) {
 
         
   
-    const config = {
-        method: "GET",
-        Headers: {
-            "Content-Type": "application/json"
-        },
-
-    };
-
-     fetch(baseURL, config)
-        .then((response) => {
-            console.log(response);
-            return response.json();
-        })
-        //.then((data) => console.log(data))
-        .catch((error) => console.log(error));
-
 
 
     return (

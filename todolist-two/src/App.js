@@ -4,65 +4,26 @@ import './App.css';
 import { Formulario } from './componentes/Formulario';
 import { Tarea } from './componentes/Tarea';
 
- export const baseURL = "https://assets.breatheco.de/apis/fake/todos/user/mzambrano";
+ export const baseURL = "http://assets.breatheco.de/apis/fake/todos/user/maryzambrano"
 
 function App() {
 
+  
   const [tarea, setTarea] = useState('')
   const [listadoTareas, setListadoTareas] = useState([])
 
 
-  // const url = "https://assets.breatheco.de/apis/fake/todos/user/mzambrano";
-  // const config = { 
-  //   method: "PUT",
-  //   Headers: {
-  //     "Content-Type": "application/json"
-  //   },
-  //   body: JSON.stringify([
-  //     [
-  //       { label: "Estudiar", done: false },
-  //       { label: "Lavar la Ropa", done: false },
-  //       { label: "Hacer mercado", done: false }
-  //     ]
 
-  //   ]),
-  // };
+  const getTask = () =>{
+    fetch(baseURL)
+    .then(data=>data.json())
+    .then(response=>setTarea(response))
 
-  // fetch(url, config)
-  // .then((response) => {
-  //   console.log(response);
-  //   return response.json();
-  // })
-  // .catch((error) => console.log(error));
-
-
-
-    // const URL = "https://assets.breatheco.de/apis/fake/todos/user/mzambrano";
-    // const config = {
-    //     method: "POST",
-    //     headers: {
-    //         "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify([]),
-    // };
-
-    // fetch(URL, config)
-    //     .then((response) => {
-    //         console.log(response);
-    //         return response.json();
-    //     })
-    //     .catch((error) => console.log(error));
+  }
+    useEffect(()=>{
+      getTask();
+    },[])
   
-
-
- 
-  
-    
-  
-
- 
-
-
 
 
   function handleSubmit(e) {
@@ -81,30 +42,7 @@ function App() {
 
     const temp = [nuevaTarea, ...listadoTareas]
     setListadoTareas(temp)
-
-
-
-  const config = { 
-    method: "PUT",
-    Headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify([
-      [
-        { label: "Estudiar", done: false },
-        { label: "Lavar la Ropa", done: false },
-        { label: "Hacer mercado", done: false }
-      ]
-
-    ]),
-  };
-
-  fetch(baseURL, config)
-  .then((response) => {
-    console.log(response);
-    return response.json();
-  })
-  .catch((error) => console.log(error));
+  
 
     setTarea('')
   }
