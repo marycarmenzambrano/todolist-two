@@ -19,7 +19,7 @@ export function Formulario(props) {
             <input type="submit"
                 className="btn"
                 value="Agregar"
-                //onClick={handleSubmit}
+                onClick={handleSubmit}
                 
                 />
 

@@ -4,26 +4,27 @@ import './App.css';
 import { Formulario } from './componentes/Formulario';
 import { Tarea } from './componentes/Tarea';
 
- export const baseURL = "http://assets.breatheco.de/apis/fake/todos/user/maryzambrano"
+export const baseURL = "http://assets.breatheco.de/apis/fake/todos/user/maryzambrano"
 
 function App() {
 
-  
+
   const [tarea, setTarea] = useState('')
   const [listadoTareas, setListadoTareas] = useState([])
 
 
 
-  const getTask = () =>{
-    fetch(baseURL)
-    .then(data=>data.json())
-    .then(response=>setTarea(response))
+  const useEffect = () => {
+    fetch("http://assets.breatheco.de/apis/fake/todos/user/maryzambrano")
+      .then(data => data.json())
+      .then(response => setTarea(response))
 
   }
-    useEffect(()=>{
-      getTask();
-    },[])
   
+  /*seEffect(() => {
+    getTask();
+  }, [])*/
+
 
 
   function handleSubmit(e) {
@@ -42,7 +43,7 @@ function App() {
 
     const temp = [nuevaTarea, ...listadoTareas]
     setListadoTareas(temp)
-  
+
 
     setTarea('')
   }
@@ -59,36 +60,36 @@ function App() {
 
 
   return (
-    
-      <div className='contendorPrincipal'>
-        <h1>Todolist</h1>
 
-        <div className='contenedorFormulario'>
-          <Formulario
-            tarea={tarea}
-            handleSubmit={handleSubmit}
-            handleChange={handleChange} />
-        </div>
+    <div className='contendorPrincipal'>
+      <h1>Todolist</h1>
 
-        <div className='contenedorTareas'>
-          <h2>Lista de Tareas</h2>
-
-          <div className='contenedorInfoTareas'>
-            {
-              listadoTareas.map(tarea => (
-                <Tarea
-                  key={tarea.id}
-                  id={tarea.id}
-                  tarea={tarea}
-                  onBorrarTarea={onBorrarTarea}
-                />
-              ))
-            }
-
-          </div>
-
-        </div>
+      <div className='contenedorFormulario'>
+        <Formulario
+          tarea={tarea}
+          handleSubmit={handleSubmit}
+          handleChange={handleChange} />
       </div>
+
+      <div className='contenedorTareas'>
+        <h2>Lista de Tareas</h2>
+
+        <div className='contenedorInfoTareas'>
+          {
+            listadoTareas.map(tarea => (
+              <Tarea
+                key={tarea.id}
+                id={tarea.id}
+                tarea={tarea}
+                onBorrarTarea={onBorrarTarea}
+              />
+            ))
+          }
+
+        </div>
+
+      </div>
+    </div>
   );
 }
 

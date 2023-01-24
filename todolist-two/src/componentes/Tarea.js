@@ -3,7 +3,7 @@ import { useState } from "react";
 export function Tarea(props) {
   
   const { tarea, onBorrarTarea} = props
-  const[editando] = useState(false)
+  const [editando] = useState(false)
   
 
 

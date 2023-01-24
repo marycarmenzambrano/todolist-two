@@ -17,7 +17,7 @@ h1 {
 
 .contenedorFormulario {
   width: 50%;
-  background-color: rgb(218, 53, 149);
+  background-color: rgb(204, 38, 135);
   display: flex;
   text-align: center;
   justify-content: center;
@@ -28,7 +28,7 @@ h1 {
 
 .contenedorTareas {
   width: 50%;
-  background-color: rgb(218, 53, 149);
+  background-color: rgb(204, 38, 135);
   padding: 10px;
   margin-top: 5px;
   border-radius: 10px;
